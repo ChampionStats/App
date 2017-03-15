@@ -29,5 +29,8 @@ namespace LoL.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Item> Items { get; set; }
+
     }
 }
