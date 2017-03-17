@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using LoL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,58 +7,55 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using LoL.Models;
 
 namespace LoL.Controllers
 {
-
-
-    public class ItemController : Controller
+    public class ChampionController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Item
-        public ActionResult AddItems()
+        // GET: Champion
+        public ActionResult AddChampions()
         {
-            int itemCount = 0;
+            int champCount = 0;
 
-            for (int z = 1001; z <= 4000; z++)
+            for (int z = 1; z <= 300; z++)
             {
                 try
                 {
-                    var json = new WebClient().DownloadString("https://global.api.pvp.net/api/lol/static-data/NA/v1.2/item/" + z.ToString() + "?api_key=RGAPI-bdeef08a-76db-47d5-b0e0-33fd0d9f34ff");
+                    var json = new WebClient().DownloadString("https://global.api.pvp.net/api/lol/static-data/NA/v1.2/champion/" + champCount + "?api_key=RGAPI-bdeef08a-76db-47d5-b0e0-33fd0d9f34ff");
                     string JsonString = json.ToString();
 
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
 
-                    Item t = serializer.Deserialize<Item>(JsonString);
+                    Champion c = serializer.Deserialize<Champion>(JsonString);
 
-                    db.Items.Add(t);
+                    db.Champions.Add(c);
                     db.SaveChanges();
 
-
-                    itemCount++;
                 }
                 catch
                 {
 
                 }
+                champCount++;
+
                 Thread.Sleep(1200);
             }
 
-            ViewBag.AddCount = itemCount;
+            ViewBag.AddCount = champCount;
 
             return View();
         }
 
-        public ActionResult ClearItems()
+        public ActionResult ClearChampions()
         {
-            var rows = from o in db.Items
+            var rows = from o in db.Champions
                        select o;
 
             foreach (var row in rows)
             {
-                db.Items.Remove(row);
+                db.Champions.Remove(row);
             }
             db.SaveChanges();
 

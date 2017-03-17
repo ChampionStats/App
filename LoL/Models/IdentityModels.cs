@@ -32,5 +32,7 @@ namespace LoL.Models
 
         public DbSet<Item> Items { get; set; }
 
+        public DbSet<Champion> Champions { get; set; }
+
     }
 }
