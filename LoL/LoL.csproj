@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ItemssssssssController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,12 +187,21 @@
     <Compile Include="Migrations\201703172036338_champs.Designer.cs">
       <DependentUpon>201703172036338_champs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703172155423_players.cs" />
+    <Compile Include="Migrations\201703172155423_players.Designer.cs">
+      <DependentUpon>201703172155423_players.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703172156555_pplayerrank.cs" />
+    <Compile Include="Migrations\201703172156555_pplayerrank.Designer.cs">
+      <DependentUpon>201703172156555_pplayerrank.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Champion.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -261,6 +271,9 @@
     <Content Include="Views\Item\ClearItems.cshtml" />
     <Content Include="Views\Champion\AddChampions.cshtml" />
     <Content Include="Views\Champion\ClearChampions.cshtml" />
+    <Content Include="Views\Player\GetMasterPlayers.cshtml" />
+    <Content Include="Views\Player\GetChallengerPlayers.cshtml" />
+    <Content Include="Views\Player\ClearChallengerPlayers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -280,6 +293,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703172036338_champs.resx">
       <DependentUpon>201703172036338_champs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703172155423_players.resx">
+      <DependentUpon>201703172155423_players.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703172156555_pplayerrank.resx">
+      <DependentUpon>201703172156555_pplayerrank.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

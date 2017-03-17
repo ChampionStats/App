@@ -19,11 +19,11 @@ namespace LoL.Controllers
         {
             int champCount = 0;
 
-            for (int z = 1; z <= 300; z++)
+            for (int z = 300; z <= 500; z++)
             {
                 try
                 {
-                    var json = new WebClient().DownloadString("https://global.api.pvp.net/api/lol/static-data/NA/v1.2/champion/" + champCount + "?api_key=RGAPI-bdeef08a-76db-47d5-b0e0-33fd0d9f34ff");
+                    var json = new WebClient().DownloadString("https://global.api.pvp.net/api/lol/static-data/NA/v1.2/champion/" + z + "?api_key=RGAPI-bdeef08a-76db-47d5-b0e0-33fd0d9f34ff");
                     string JsonString = json.ToString();
 
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -33,12 +33,14 @@ namespace LoL.Controllers
                     db.Champions.Add(c);
                     db.SaveChanges();
 
+                    champCount++;
+
                 }
                 catch
                 {
 
                 }
-                champCount++;
+                
 
                 Thread.Sleep(1200);
             }
