@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ItemssssssssController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MatchlistController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -195,12 +196,21 @@
     <Compile Include="Migrations\201703172156555_pplayerrank.Designer.cs">
       <DependentUpon>201703172156555_pplayerrank.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703180049086_matchlist.cs" />
+    <Compile Include="Migrations\201703180049086_matchlist.Designer.cs">
+      <DependentUpon>201703180049086_matchlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703180121384_fixnatchksut.cs" />
+    <Compile Include="Migrations\201703180121384_fixnatchksut.Designer.cs">
+      <DependentUpon>201703180121384_fixnatchksut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Champion.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Matchlist.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -274,6 +284,7 @@
     <Content Include="Views\Player\GetMasterPlayers.cshtml" />
     <Content Include="Views\Player\GetChallengerPlayers.cshtml" />
     <Content Include="Views\Player\ClearChallengerPlayers.cshtml" />
+    <Content Include="Views\Matchlist\GetMatches.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,6 +310,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703172156555_pplayerrank.resx">
       <DependentUpon>201703172156555_pplayerrank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703180049086_matchlist.resx">
+      <DependentUpon>201703180049086_matchlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703180121384_fixnatchksut.resx">
+      <DependentUpon>201703180121384_fixnatchksut.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

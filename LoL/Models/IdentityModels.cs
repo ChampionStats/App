@@ -36,5 +36,7 @@ namespace LoL.Models
 
         public DbSet<Player> Players { get; set; }
 
+        public DbSet<Matchlist> Matchlist{ get; set; }
+
     }
 }
