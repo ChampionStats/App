@@ -175,34 +175,37 @@
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ItemssssssssController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MasteryController.cs" />
+    <Compile Include="Controllers\MatchController.cs" />
     <Compile Include="Controllers\MatchlistController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Controllers\RuneController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703170109518_init.cs" />
-    <Compile Include="Migrations\201703170109518_init.Designer.cs">
-      <DependentUpon>201703170109518_init.cs</DependentUpon>
+    <Compile Include="Migrations\201703182257393_init.cs" />
+    <Compile Include="Migrations\201703182257393_init.Designer.cs">
+      <DependentUpon>201703182257393_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703172036338_champs.cs" />
-    <Compile Include="Migrations\201703172036338_champs.Designer.cs">
-      <DependentUpon>201703172036338_champs.cs</DependentUpon>
+    <Compile Include="Migrations\201703192122069_runes.cs" />
+    <Compile Include="Migrations\201703192122069_runes.Designer.cs">
+      <DependentUpon>201703192122069_runes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703172155423_players.cs" />
-    <Compile Include="Migrations\201703172155423_players.Designer.cs">
-      <DependentUpon>201703172155423_players.cs</DependentUpon>
+    <Compile Include="Migrations\201703200035298_mastyeries.cs" />
+    <Compile Include="Migrations\201703200035298_mastyeries.Designer.cs">
+      <DependentUpon>201703200035298_mastyeries.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703172156555_pplayerrank.cs" />
-    <Compile Include="Migrations\201703172156555_pplayerrank.Designer.cs">
-      <DependentUpon>201703172156555_pplayerrank.cs</DependentUpon>
+    <Compile Include="Migrations\201703200113465_match.cs" />
+    <Compile Include="Migrations\201703200113465_match.Designer.cs">
+      <DependentUpon>201703200113465_match.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703180049086_matchlist.cs" />
-    <Compile Include="Migrations\201703180049086_matchlist.Designer.cs">
-      <DependentUpon>201703180049086_matchlist.cs</DependentUpon>
+    <Compile Include="Migrations\201703210102492_thebigrename.cs" />
+    <Compile Include="Migrations\201703210102492_thebigrename.Designer.cs">
+      <DependentUpon>201703210102492_thebigrename.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703180121384_fixnatchksut.cs" />
-    <Compile Include="Migrations\201703180121384_fixnatchksut.Designer.cs">
-      <DependentUpon>201703180121384_fixnatchksut.cs</DependentUpon>
+    <Compile Include="Migrations\201703210201452_testupdate.cs" />
+    <Compile Include="Migrations\201703210201452_testupdate.Designer.cs">
+      <DependentUpon>201703210201452_testupdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -210,8 +213,17 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\StaticMastery.cs" />
+    <Compile Include="Models\MatchData.cs" />
     <Compile Include="Models\Matchlist.cs" />
-    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\ParticipantList.cs" />
+    <Compile Include="Models\ParticipantId.cs" />
+    <Compile Include="Models\ParticipantMasteries.cs" />
+    <Compile Include="Models\ParticipantRunes.cs" />
+    <Compile Include="Models\ParticipantStats.cs" />
+    <Compile Include="Models\LoLPlayer.cs" />
+    <Compile Include="Models\StaticRunes.cs" />
+    <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -237,7 +249,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -285,6 +299,10 @@
     <Content Include="Views\Player\GetChallengerPlayers.cshtml" />
     <Content Include="Views\Player\ClearChallengerPlayers.cshtml" />
     <Content Include="Views\Matchlist\GetMatches.cshtml" />
+    <Content Include="Views\Matchlist\RemoveDuplicate.cshtml" />
+    <Content Include="Views\Rune\AddRunes.cshtml" />
+    <Content Include="Views\Mastery\AddMasteries.cshtml" />
+    <Content Include="Views\Match\GetMatches.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,23 +317,23 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703170109518_init.resx">
-      <DependentUpon>201703170109518_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703182257393_init.resx">
+      <DependentUpon>201703182257393_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703172036338_champs.resx">
-      <DependentUpon>201703172036338_champs.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703192122069_runes.resx">
+      <DependentUpon>201703192122069_runes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703172155423_players.resx">
-      <DependentUpon>201703172155423_players.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703200035298_mastyeries.resx">
+      <DependentUpon>201703200035298_mastyeries.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703172156555_pplayerrank.resx">
-      <DependentUpon>201703172156555_pplayerrank.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703200113465_match.resx">
+      <DependentUpon>201703200113465_match.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703180049086_matchlist.resx">
-      <DependentUpon>201703180049086_matchlist.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703210102492_thebigrename.resx">
+      <DependentUpon>201703210102492_thebigrename.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703180121384_fixnatchksut.resx">
-      <DependentUpon>201703180121384_fixnatchksut.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703210201452_testupdate.resx">
+      <DependentUpon>201703210201452_testupdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

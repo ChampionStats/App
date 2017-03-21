@@ -3,27 +3,25 @@ namespace LoL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class champs : DbMigration
+    public partial class mastyeries : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Champions",
+                "dbo.Masteries",
                 c => new
                     {
-                        ChampionId = c.Int(nullable: false, identity: true),
+                        MasteryId = c.Int(nullable: false, identity: true),
                         id = c.Int(nullable: false),
-                        title = c.String(),
-                        key = c.String(),
                         name = c.String(),
                     })
-                .PrimaryKey(t => t.ChampionId);
+                .PrimaryKey(t => t.MasteryId);
             
         }
         
         public override void Down()
         {
-            DropTable("dbo.Champions");
+            DropTable("dbo.Masteries");
         }
     }
 }

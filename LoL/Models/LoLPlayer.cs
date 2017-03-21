@@ -6,7 +6,7 @@ using System.Web;
 
 namespace LoL.Models
 {
-    public class Player
+    public class LoLPlayer
     {
         [Key]
         public int PlayerId { get; set; }

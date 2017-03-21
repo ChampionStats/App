@@ -34,9 +34,23 @@ namespace LoL.Models
 
         public DbSet<Champion> Champions { get; set; }
 
-        public DbSet<Player> Players { get; set; }
+        public DbSet<LoLPlayer> Players { get; set; }
 
         public DbSet<Matchlist> Matchlist{ get; set; }
+
+        public DbSet<StaticRunes> Runes { get; set; }
+
+        public DbSet<StaticMastery> Masteries { get; set; }
+
+        public DbSet<MatchData> Match { get; set; }
+        public DbSet<ParticipantList> Participant { get; set; }
+        public DbSet<ParticipantId> ParticipantIdentity { get; set; }
+        public DbSet<ParticipantMasteries> ParticipantMasteries { get; set; }
+        public DbSet<ParticipantRunes> ParticipantRunes { get; set; }
+        public DbSet<ParticipantStats> ParticipantStats { get; set; }
+        public DbSet<Team> Team { get; set; }
+
+
 
     }
 }

@@ -27,7 +27,7 @@ namespace LoL.Controllers
 
             foreach(Entry e in c.entries)
             {
-                Player p = new Player
+                LoLPlayer p = new LoLPlayer
                 {
                     playerOrTeamId = e.playerOrTeamId,
                     playerOrTeamName = e.playerOrTeamName,
@@ -56,7 +56,7 @@ namespace LoL.Controllers
 
             foreach (Entry e in c.entries)
             {
-                Player p = new Player
+                LoLPlayer p = new LoLPlayer
                 {
                     playerOrTeamId = e.playerOrTeamId,
                     playerOrTeamName = e.playerOrTeamName,

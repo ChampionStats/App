@@ -7,13 +7,13 @@ namespace LoL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class fixnatchksut : IMigrationMetadata
+    public sealed partial class thebigrename : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(fixnatchksut));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(thebigrename));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703180121384_fixnatchksut"; }
+            get { return "201703210102492_thebigrename"; }
         }
         
         string IMigrationMetadata.Source

@@ -8,6 +8,18 @@ namespace LoL.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Champions",
+                c => new
+                    {
+                        ChampionId = c.Int(nullable: false, identity: true),
+                        id = c.Int(nullable: false),
+                        title = c.String(),
+                        key = c.String(),
+                        name = c.String(),
+                    })
+                .PrimaryKey(t => t.ChampionId);
+            
+            CreateTable(
                 "dbo.Items",
                 c => new
                     {
@@ -18,6 +30,33 @@ namespace LoL.Migrations
                         name = c.String(),
                     })
                 .PrimaryKey(t => t.ItemId);
+            
+            CreateTable(
+                "dbo.Matchlists",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        region = c.String(),
+                        platformId = c.String(),
+                        matchId = c.Long(nullable: false),
+                        champion = c.Int(nullable: false),
+                        queue = c.String(),
+                        season = c.String(),
+                        lane = c.String(),
+                        role = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Players",
+                c => new
+                    {
+                        PlayerId = c.Int(nullable: false, identity: true),
+                        playerOrTeamId = c.String(),
+                        playerOrTeamName = c.String(),
+                        rank = c.String(),
+                    })
+                .PrimaryKey(t => t.PlayerId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -106,7 +145,10 @@ namespace LoL.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Players");
+            DropTable("dbo.Matchlists");
             DropTable("dbo.Items");
+            DropTable("dbo.Champions");
         }
     }
 }

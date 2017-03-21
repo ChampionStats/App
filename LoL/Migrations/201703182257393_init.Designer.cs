@@ -13,7 +13,7 @@ namespace LoL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201703170109518_init"; }
+            get { return "201703182257393_init"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,4 +1,6 @@
 ﻿using LoL.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,62 +40,101 @@ namespace LoL.Controllers
             */
 
             // Get all current players (Mast and Chall)
-            var rows = from o in db.Players
-                       select o;
+            var rows = (from o in db.Players
+                       select o);
 
             // Loop through each player in database
             foreach (var row in rows)
             {
                 // Try to add played matches to matchlist
+
                 try
                 {
+                    Thread.Sleep(2000);
                     // Get all matches played by a player in patch 7.5 in RANKED SOLO when Taric is played
-                    var json = new WebClient().DownloadString("https://na.api.pvp.net/api/lol/NA/v2.2/matchlist/by-summoner/" + row.playerOrTeamId + "?rankedQueues=TEAM_BUILDER_RANKED_SOLO&beginTime=1489099788969&championIds=44&api_key=RGAPI-bdeef08a-76db-47d5-b0e0-33fd0d9f34ff");
+                    string json = new WebClient().DownloadString("https://na.api.pvp.net/api/lol/NA/v2.2/matchlist/by-summoner/" + row.playerOrTeamId + "?rankedQueues=TEAM_BUILDER_RANKED_SOLO&beginTime=1489099788969&api_key=RGAPI-bdeef08a-76db-47d5-b0e0-33fd0d9f34ff");
 
                     // Convert from JSON to object
-                    string JsonString = json.ToString();
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    RootObject r = serializer.Deserialize<RootObject>(JsonString);
+                    RootObject data = JsonConvert.DeserializeObject<RootObject>(json);
 
-                    // Loop through each match by a single player
-                    foreach (var match in r.matches)
+                    List<Matchlist> r = data.matches;
+
+                    // Check if player has any matches
+                    if (r != null)
                     {
-                        // Get list of current matches in the matchlist
-                        var currentMatches = from o in db.Matchlist
-                                                select o;
 
-                        // Set variable back to false before looping through next current match
-                        bool matchExists = false;
-
-                        // Loop through each match currently in matchlist
-                        foreach (var m in currentMatches)
+                        // Loop through each match by a single player
+                        foreach (var match in r)
                         {
-                            // Check if current match of player equals a match from matchlist
-                            if(match.matchId == m.matchId)
+                            // Get list of current matches in the matchlist
+                            var currentMatches = from o in db.Matchlist
+                                                 select o;
+
+                            // Set variable back to false before looping through next current match
+                            bool matchExists = false;
+
+                            // Loop through each match currently in matchlist
+                            foreach (var m in currentMatches)
                             {
-                                matchExists = true;
+                                // Check if current match of player equals a match from matchlist
+                                if (match.matchId == m.matchId)
+                                {
+                                    matchExists = true;
+                                }
+
                             }
 
-                        }
+                            // Check if match played by player does not exist
+                            if (matchExists == false)
+                            {
+                                db.Matchlist.Add(match);
 
-                        // Check if match played by player does not exist
-                        if (matchExists == false)
-                        {
-                            db.Matchlist.Add(match);
-                            db.SaveChanges();
+                            }
                         }
-                    }
-
+                    }              
                 }
                 catch
                 {
 
                 }
-
-                Thread.Sleep(1200);
+                
             }
- 
+
+            db.SaveChanges();
+
             return View();
         }
+
+        public ActionResult RemoveDuplicate()
+        {
+            // Get all current players (Mast and Chall)
+            var rows = (from o in db.Matchlist
+                        select o);
+
+            // Iterate through all matches in matchlist
+            foreach (Matchlist currentMatch in rows)
+            {
+
+                // Compare one match to all other matches
+                foreach (Matchlist matchToCompare in rows)
+                {
+                    // Check is current matchid appears anywhere else
+                    if (currentMatch.matchId == matchToCompare.matchId)
+                    {
+                        // Test if the match record is the same
+                        if (currentMatch.Id != matchToCompare.Id)
+                        {
+                            db.Matchlist.Remove(matchToCompare);
+                        }
+                    }         
+                }
+            }
+
+            db.SaveChanges();
+
+
+            return View();
+        }
+
     }
 }

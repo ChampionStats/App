@@ -12,7 +12,7 @@ namespace LoL.Models
         public int Id { get; set; }
         public string region { get; set; }
         public string platformId { get; set; }
-        public int matchId { get; set; }
+        public long matchId { get; set; }
         public int champion { get; set; }
         public string queue { get; set; }
         public string season { get; set; }

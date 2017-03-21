@@ -19,7 +19,7 @@ namespace LoL.Controllers
         {
             int champCount = 0;
 
-            for (int z = 300; z <= 500; z++)
+            for (int z = 0; z < 300; z++)
             {
                 try
                 {
