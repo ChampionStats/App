@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,7 @@ namespace LoL.Models
     public class MatchData
     {
         [Key]
-        public string ID { get; set; }
+        public int MatchDataID { get; set; }
         public long matchId { get; set; }
         public string region { get; set; }
         public string platformId { get; set; }
@@ -21,8 +22,5 @@ namespace LoL.Models
         public int mapId { get; set; }
         public string season { get; set; }
         public string matchVersion { get; set; }
-        public List<ParticipantList> participants { get; set; }
-        public List<ParticipantId> participantIdentities { get; set; }
-        public List<Team> teams { get; set; }
     }
 }

@@ -11,10 +11,12 @@ namespace LoL.Models
         [Key]
         public int PlayerId { get; set; }
 
-        public string playerOrTeamId { get; set; }
-
-        public string playerOrTeamName { get; set; }
+        public int playerOrTeamId { get; set; }
 
         public string rank { get; set; }
+
+        public string region { get; set; }
+
+        public bool hasChecked { get; set; }
     }
 }

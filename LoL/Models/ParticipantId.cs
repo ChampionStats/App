@@ -13,5 +13,6 @@ namespace LoL.Models
         public long matchid { get; set; }
         public int participantId { get; set; }
         public int playerid { get; set; }
+        public int champion { get; set; }
     }
 }

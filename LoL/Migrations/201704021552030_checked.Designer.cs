@@ -7,13 +7,13 @@ namespace LoL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class mastyeries : IMigrationMetadata
+    public sealed partial class _checked : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(mastyeries));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_checked));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703200035298_mastyeries"; }
+            get { return "201704021552030_checked"; }
         }
         
         string IMigrationMetadata.Source

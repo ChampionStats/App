@@ -49,6 +49,7 @@ namespace LoL.Models
         public DbSet<ParticipantRunes> ParticipantRunes { get; set; }
         public DbSet<ParticipantStats> ParticipantStats { get; set; }
         public DbSet<Team> Team { get; set; }
+        public DbSet<MatchLanes> MatchLanes { get; set; }
 
 
 

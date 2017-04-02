@@ -10,6 +10,7 @@ namespace LoL.Models
     {
         [Key]
         public int id { get; set; }
+        public long matchid { get; set; }
         public int participantid { get; set; }
         public bool winner { get; set; }
         public int champLevel { get; set; }

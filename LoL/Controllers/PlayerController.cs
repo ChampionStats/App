@@ -6,6 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using LoL.Controllers;
 
 namespace LoL.Controllers
 {
@@ -13,31 +14,44 @@ namespace LoL.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public ActionResult Index()
+        {
+            
+            return View();
+        }
+
+
+
         // GET: Players
         public ActionResult GetMasterPlayers()
         {
+            long playerCount = 0;
+            string apiKey = DataController.GameData.apiKey;
 
-            string json = new WebClient().DownloadString("https://na.api.pvp.net/api/lol/NA/v2.5/league/master?type=RANKED_SOLO_5x5&api_key=RGAPI-bdeef08a-76db-47d5-b0e0-33fd0d9f34ff");
-
-            string JsonString = json.ToString();
-
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-            RootObject c = serializer.Deserialize<RootObject>(JsonString);
-
-            foreach(Entry e in c.entries)
+            foreach (string region in DataController.GameData.gameRegions)
             {
-                LoLPlayer p = new LoLPlayer
-                {
-                    playerOrTeamId = e.playerOrTeamId,
-                    playerOrTeamName = e.playerOrTeamName,
-                    rank = "Master"
-                };
+                string json = new WebClient().DownloadString("https://" + region + ".api.pvp.net/api/lol/" + region + "/v2.5/league/master?type=RANKED_SOLO_5x5&api_key=" + apiKey);
+                string JsonString = json.ToString();
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                RootObject c = serializer.Deserialize<RootObject>(JsonString);
 
-                db.Players.Add(p);
-                db.SaveChanges();
+                foreach (Entry e in c.entries)
+                {
+                    LoLPlayer p = new LoLPlayer
+                    {
+                        //playerOrTeamId = e.playerOrTeamId,
+                        //playerOrTeamName = e.playerOrTeamName,
+                        rank = "Master",
+                        region = region
+                    };
+
+                    db.Players.Add(p);
+                    db.SaveChanges();
+                    playerCount++;
+                }
             }
 
+            ViewBag.Count = playerCount;
 
             return View();
         }
@@ -46,30 +60,37 @@ namespace LoL.Controllers
         public ActionResult GetChallengerPlayers()
         {
 
-            string json = new WebClient().DownloadString("https://na.api.pvp.net/api/lol/NA/v2.5/league/challenger?type=RANKED_SOLO_5x5&api_key=RGAPI-bdeef08a-76db-47d5-b0e0-33fd0d9f34ff");
+            long playerCount = 0;
+            string apiKey = DataController.GameData.apiKey;
 
-            string JsonString = json.ToString();
-
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-            RootObject c = serializer.Deserialize<RootObject>(JsonString);
-
-            foreach (Entry e in c.entries)
+            foreach (string region in DataController.GameData.gameRegions)
             {
-                LoLPlayer p = new LoLPlayer
-                {
-                    playerOrTeamId = e.playerOrTeamId,
-                    playerOrTeamName = e.playerOrTeamName,
-                    rank = "Challenger"
-                };
+                string json = new WebClient().DownloadString("https://" + region + ".api.pvp.net/api/lol/" + region + "/v2.5/league/challenger?type=RANKED_SOLO_5x5&api_key=" + apiKey);
+                string JsonString = json.ToString();
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                RootObject c = serializer.Deserialize<RootObject>(JsonString);
 
-                db.Players.Add(p);
-                db.SaveChanges();
+                foreach (Entry e in c.entries)
+                {
+                    LoLPlayer p = new LoLPlayer
+                    {
+                        //playerOrTeamId = e.playerOrTeamId,
+                        //playerOrTeamName = e.playerOrTeamName,
+                        rank = "Challenger",
+                        region = region
+                    };
+
+                    db.Players.Add(p);
+                    db.SaveChanges();
+                    playerCount++;
+                }
             }
 
+            ViewBag.Count = playerCount;
 
             return View();
         }
+
 
 
         public ActionResult ClearChallengerPlayers()

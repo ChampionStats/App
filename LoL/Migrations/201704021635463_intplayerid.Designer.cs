@@ -7,13 +7,13 @@ namespace LoL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class testupdate : IMigrationMetadata
+    public sealed partial class intplayerid : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(testupdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(intplayerid));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703210201452_testupdate"; }
+            get { return "201704021635463_intplayerid"; }
         }
         
         string IMigrationMetadata.Source

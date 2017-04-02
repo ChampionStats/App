@@ -44,15 +44,15 @@ namespace LoL.Controllers
                        select o);
 
             // Loop through each player in database
-            foreach (var row in rows)
+            foreach (var row in rows.ToList())
             {
                 // Try to add played matches to matchlist
 
-                try
-                {
+            try { 
+
                     Thread.Sleep(2000);
-                    // Get all matches played by a player in patch 7.5 in RANKED SOLO when Taric is played
-                    string json = new WebClient().DownloadString("https://na.api.pvp.net/api/lol/NA/v2.2/matchlist/by-summoner/" + row.playerOrTeamId + "?rankedQueues=TEAM_BUILDER_RANKED_SOLO&beginTime=1489099788969&api_key=RGAPI-bdeef08a-76db-47d5-b0e0-33fd0d9f34ff");
+                    // Get all matches played by a player in patch 7.5+ in RANKED SOLO
+                    string json = new WebClient().DownloadString("https://" + row.region + ".api.pvp.net/api/lol/" + row.region + "/v2.2/matchlist/by-summoner/" + row.playerOrTeamId + "?rankedQueues=TEAM_BUILDER_RANKED_SOLO&beginTime=1489099788969&api_key=" + DataController.GameData.apiKey);
 
                     // Convert from JSON to object
                     RootObject data = JsonConvert.DeserializeObject<RootObject>(json);
@@ -64,7 +64,7 @@ namespace LoL.Controllers
                     {
 
                         // Loop through each match by a single player
-                        foreach (var match in r)
+                        foreach (var match in r.ToList())
                         {
                             // Get list of current matches in the matchlist
                             var currentMatches = from o in db.Matchlist
@@ -74,7 +74,7 @@ namespace LoL.Controllers
                             bool matchExists = false;
 
                             // Loop through each match currently in matchlist
-                            foreach (var m in currentMatches)
+                            foreach (var m in currentMatches.ToList())
                             {
                                 // Check if current match of player equals a match from matchlist
                                 if (match.matchId == m.matchId)
@@ -88,16 +88,22 @@ namespace LoL.Controllers
                             if (matchExists == false)
                             {
                                 db.Matchlist.Add(match);
+                                db.SaveChanges();
 
                             }
                         }
-                    }              
-                }
+
+                    }
+
+                 }
+
                 catch
                 {
 
                 }
-                
+
+
+
             }
 
             db.SaveChanges();
@@ -130,7 +136,7 @@ namespace LoL.Controllers
                 }
             }
 
-            db.SaveChanges();
+            
 
 
             return View();

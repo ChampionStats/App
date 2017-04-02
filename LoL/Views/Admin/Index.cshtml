@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <br />
+        <div class="panel panel-default">
+            <div class="panel-body text-center">
+                <h2>Admin</h2>
+
+                <hr />
+
+                <div class="col-xs-12">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <a class="btn btn-success btn-lg" href="~/Miner/Crawler">
+                            <div class="glyphicon glyphicon-globe"></div>
+                            <div><h3>League Miner Crawler</h3></div>
+                            <div><h5>v 1.0</h5></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <br />
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h3>Static Data</h3>
+            </div>
+            <div class="panel-body">
+                <fieldset>
+                    <legend>Champions</legend>
+                    <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Update Champions</a>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h3>Players</h3>
+            </div>
+            <div class="panel-body">
+                <fieldset>
+                    <legend>Master</legend>
+                    <a href="/Player/GetMasterPlayers" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span> Update Players</a>
+                </fieldset>
+                <br />
+                <fieldset>
+                    <legend>Challenger</legend>
+                    <a href="/Player/GetChallengerPlayers" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span> Update Players</a>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h3>Matches</h3>
+            </div>
+            <div class="panel-body">
+                <fieldset>
+                    <legend>Mactchlist</legend>
+                    <a href="/matchlist/getmatches" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span> Update Matchlist</a>
+                </fieldset>
+                <br />
+
+                <fieldset>
+                    <legend>Match Detail</legend>
+                    <a href="/match/GetMatches" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span> Update Match Details</a>
+                </fieldset>
+                <br />
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
