@@ -171,6 +171,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\ChampionController.cs" />
+    <Compile Include="Controllers\CrawlerController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
@@ -321,7 +322,10 @@
     <Content Include="Views\Match\GetMatches.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />
-    <Content Include="Views\LeagueMiner\Crawler.cshtml" />
+    <Content Include="Views\Miner\CrawlerStart.cshtml" />
+    <Content Include="Views\Miner\Index.cshtml" />
+    <Content Include="Views\Crawler\Index.cshtml" />
+    <Content Include="Views\Crawler\StartCrawler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

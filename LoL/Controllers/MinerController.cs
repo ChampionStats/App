@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace LoL.Controllers
 {
-    public class LeagueMiner : Controller
+    public class MinerController : Controller
     {
         // GET: Match
         public ActionResult Index()
@@ -163,8 +163,6 @@ namespace LoL.Controllers
 
 
         // League Miner Crawler v 1.0
-        // 
-        [HttpGet]
         public ActionResult Crawler()
         {
             // DB Context

@@ -25,7 +25,7 @@ namespace LoL.Controllers
                         "LAS"
             };
 
-            public static string apiKey = "RGAPI-bdeef08a-76db-47d5-b0e0-33fd0d9f34ff";
+            public static string apiKey = "RGAPI-62f8af2b-ced7-449e-99a2-e653783e50d5";
         }
 
 
